@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const FisaFloatButton = ({ label, onClick, style }) => {
+const WooriFloatButton = ({ label, onClick, style }) => {
   const defaultStyle = {
     position: "fixed",
     bottom: "20px",
@@ -47,15 +47,15 @@ const FisaFloatButton = ({ label, onClick, style }) => {
   );
 };
 
-FisaFloatButton.propTypes = {
+WooriFloatButton.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   style: PropTypes.object,
 };
 
-FisaFloatButton.defaultProps = {
+WooriFloatButton.defaultProps = {
   onClick: () => {},
   style: {},
 };
 
-export default FisaFloatButton;
+export default WooriFloatButton;

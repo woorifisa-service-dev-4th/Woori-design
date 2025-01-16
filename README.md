@@ -26,17 +26,17 @@ yarn add woori-design
 
 ## 🚀 Usage
 
-Here's an example of how to use the `FloatButton` component:
+Here's an example of how to use the `WooriFloatButton` component:
 
 ```jsx
 import React from "react";
-import { FloatButton } from "woori-design";
+import { WooriFloatButton } from "woori-design";
 
 const App = () => {
   return (
     <div>
       <h1>Hello, woori-design!</h1>
-      <FloatButton
+      <WooriFloatButton
         label="Click Me"
         onClick={() => alert("Button Clicked!")}
       />
@@ -60,7 +60,7 @@ export default App;
 
 ## 📘 Components
 
-### FloatButton
+### WooriFloatButton
 
 A floating action button that can be positioned anywhere on the screen.
 

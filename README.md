@@ -26,26 +26,22 @@ yarn add woori-design
 
 ## 🚀 Usage
 
-Here's an example of how to use the `WooriFloatButton` component:
+Here's an example of how to use the `FloatButton` component:
 
 ```jsx
 import React from "react";
-import { WooriFloatButton } from "woori-design";
+import { FloatButton } from "woori-design";
 
 const App = () => {
   return (
     <div>
       <h1>Hello, woori-design!</h1>
-      <WooriFloatButton
-        label="Click Me"
-        onClick={() => alert("Button Clicked!")}
-      />
+      <FloatButton label="Click Me" onClick={() => alert("Button Clicked!")} />
     </div>
   );
 };
 
 export default App;
-
 ```
 
 ---
@@ -60,17 +56,17 @@ export default App;
 
 ## 📘 Components
 
-### WooriFloatButton
+### FloatButton
 
 A floating action button that can be positioned anywhere on the screen.
 
 ### Props:
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `label` | `string` | Required | The text displayed inside the button. |
-| `onClick` | `func` | `() => {}` | Callback triggered when button is clicked. |
-| `style` | `object` | `{}` | Custom styles to override default styles. |
+| Prop      | Type     | Default    | Description                                |
+| --------- | -------- | ---------- | ------------------------------------------ |
+| `label`   | `string` | Required   | The text displayed inside the button.      |
+| `onClick` | `func`   | `() => {}` | Callback triggered when button is clicked. |
+| `style`   | `object` | `{}`       | Custom styles to override default styles.  |
 
 ---
 
@@ -79,34 +75,33 @@ A floating action button that can be positioned anywhere on the screen.
 To set up the project locally:
 
 1. Clone the repository:
-    
-    ```bash
-    git clone https://github.com/woorifisa-service-dev-4th/Woori-design
-    cd woori-design
-    
-    ```
-    
+
+   ```bash
+   git clone https://github.com/woorifisa-service-dev-4th/Woori-design
+   cd woori-design
+
+   ```
+
 2. Install dependencies:
-    
-    ```bash
-    npm install
-    
-    ```
-    
+
+   ```bash
+   npm install
+
+   ```
+
 3. Start the development server:
-    
-    ```bash
-    npm run dev
-    
-    ```
-    
+
+   ```bash
+   npm run dev
+
+   ```
+
 4. Build the package:
-    
-    ```bash
-    npm run build
-    
-    ```
-    
+
+   ```bash
+   npm run build
+
+   ```
 
 ---
 

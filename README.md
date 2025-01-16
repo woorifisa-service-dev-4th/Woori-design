@@ -1,8 +1,122 @@
-# React + Vite
+# woori-design
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React component library for creating beautiful and customizable UI components, including the floating action button (`FloatButton`) and other reusable design elements.
 
-Currently, two official plugins are available:
+This library is built to help developers quickly integrate modern UI components into their React projects, with a focus on simplicity, customization, and performance.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## 📦 Installation
+
+To use `woori-design` in your project, install it via npm or Yarn.
+
+```bash
+npm install woori-design
+
+```
+
+Or with Yarn:
+
+```bash
+yarn add woori-design
+
+```
+
+---
+
+## 🚀 Usage
+
+Here's an example of how to use the `FloatButton` component:
+
+```jsx
+import React from "react";
+import { FloatButton } from "woori-design";
+
+const App = () => {
+  return (
+    <div>
+      <h1>Hello, woori-design!</h1>
+      <FloatButton
+        label="Click Me"
+        onClick={() => alert("Button Clicked!")}
+      />
+    </div>
+  );
+};
+
+export default App;
+
+```
+
+---
+
+## 🌟 Features
+
+- **Reusable Components**: Prebuilt components to speed up your development.
+- **Customizable**: Easily style components using props or external styles.
+- **Lightweight**: Minimal dependencies and optimized for performance.
+
+---
+
+## 📘 Components
+
+### FloatButton
+
+A floating action button that can be positioned anywhere on the screen.
+
+### Props:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | Required | The text displayed inside the button. |
+| `onClick` | `func` | `() => {}` | Callback triggered when button is clicked. |
+| `style` | `object` | `{}` | Custom styles to override default styles. |
+
+---
+
+## 🛠️ Development
+
+To set up the project locally:
+
+1. Clone the repository:
+    
+    ```bash
+    git clone https://github.com/woorifisa-service-dev-4th/Woori-design
+    cd woori-design
+    
+    ```
+    
+2. Install dependencies:
+    
+    ```bash
+    npm install
+    
+    ```
+    
+3. Start the development server:
+    
+    ```bash
+    npm run dev
+    
+    ```
+    
+4. Build the package:
+    
+    ```bash
+    npm run build
+    
+    ```
+    
+
+---
+
+## 🔗 Links
+
+- **NPM**: [woori-design](https://www.npmjs.com/package/woori-design)
+- **GitHub**: [woori-design repository](https://github.com/woorifisa-service-dev-4th/Woori-design)
+
+---
+
+## 📝 License
+
+This project is licensed under the [MIT License](https://chatgpt.com/c/LICENSE).

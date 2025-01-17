@@ -1,0 +1,110 @@
+/* 기본 버튼 스타일 */
+.woori-float-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  color: #fff; /* 기본 텍스트 색상 */
+}
+
+/* 버튼 모양 */
+.woori-float-button.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.woori-float-button.rounded-square {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+/* 버튼 유형 (type) 스타일 */
+.woori-float-button.primary {
+  background-color: #007bff;
+}
+
+.woori-float-button.default {
+  background-color: #6c757d;
+}
+
+.woori-float-button.info {
+  background-color: #17a2b8;
+}
+
+.woori-float-button.warn {
+  background-color: #ffc107;
+}
+
+.woori-float-button.error {
+  background-color: #dc3545;
+}
+
+.woori-float-button.success {
+  background-color: #28a745;
+}
+
+/* Hover 효과 */
+.woori-float-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 아이콘 크기 */
+.woori-float-button > svg,
+.woori-float-button > .icon {
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 24px !important;
+  flex-shrink: 0;
+}
+
+/* 툴팁 스타일 */
+.woori-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 12px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.woori-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+}
+
+/* 배지 스타일 */
+.woori-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: bold;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}

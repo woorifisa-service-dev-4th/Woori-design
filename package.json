@@ -1,7 +1,7 @@
 {
-  "name": "fisd-module",
+  "name": "woori-design",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A React component library for FloatButton and others",
   "type": "module",
   "main": "dist/index.umd.js",
@@ -10,10 +10,12 @@
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js"
-    }
+    },
+    "./dist/Index.css": "./dist/Index.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/lib"
   ],
   "scripts": {
     "dev": "vite",
@@ -23,20 +25,9 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.17.0",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
-    "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.17.0",
-    "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.16",
-    "globals": "^15.14.0",
-    "vite": "^6.0.5"
   },
   "peerDependencies": {
     "react": "^18.0.0",
@@ -49,5 +40,9 @@
     "library"
   ],
   "author": "1223v",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.7"
+  }
 }

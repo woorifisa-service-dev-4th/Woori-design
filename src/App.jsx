@@ -1,36 +1,91 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import React, { useState } from "react";
+import Modal from "./lib/modals/WooriModal";
 import "./App.css";
-import { FloatButton } from "fisd-module";
+
+const modalTypes = ["basic", "warning", "multiChoice", "autoClose"];
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [modalStates, setModalStates] = useState(
+    Object.fromEntries(modalTypes.map((type) => [type, false]))
+  );
+
+  const handleModal = (modalType, isOpen) => {
+    setModalStates((prev) => ({ ...prev, [modalType]: isOpen }));
+  };
 
   return (
-    <>
-      <div>
-        <FloatButton />
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div>
+      {modalTypes.map((type) => (
+        <button
+          key={type}
+          className="custom-button"
+          onClick={() => handleModal(type, true)}
+        >
+          {type.charAt(0).toUpperCase() + type.slice(1)} Modal
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      ))}
+
+      <Modal
+        isOpen={modalStates.basic}
+        onClose={() => handleModal("basic", false)}
+        contentStyle={{ backgroundColor: "white" }}
+      >
+        <Modal.Header>
+          <h2>Title</h2>
+        </Modal.Header>
+        <Modal.Body>
+          <p>This is the modal content ...</p>
+          <p>This is the modal content ...</p>
+          <p>This is the modal content ...</p>
+          <p>This is the modal content ...</p>
+          <p>This is the modal content ...</p>
+          <p>This is the modal content ...</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            className="custom-button"
+            onClick={() => handleModal("basic", false)}
+          >
+            Close
+          </button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal
+        isOpen={modalStates.warning}
+        onClose={() => handleModal("warning", false)}
+        type="warning"
+        title="Warning!"
+        message="This is a warning message ..."
+      />
+
+      <Modal
+        isOpen={modalStates.multiChoice}
+        onClose={() => handleModal("multiChoice", false)}
+        type="multiChoice"
+        title="Confirm!"
+        message="Are you sure?"
+        buttons={[
+          {
+            text: "Yes",
+            onClick: () => {
+              console.log("Yes clicked");
+              handleModal("multiChoice", false);
+            },
+          },
+          { text: "No", onClick: () => handleModal("multiChoice", false) },
+        ]}
+      />
+
+      <Modal
+        isOpen={modalStates.autoClose}
+        onClose={() => handleModal("autoClose", false)}
+        type="alert"
+        title="Auto Closing"
+        autoClose={true}
+        autoCloseTime={5000}
+      />
+    </div>
   );
 }
 

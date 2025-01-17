@@ -114,4 +114,4 @@ To set up the project locally:
 
 ## 📝 License
 
-This project is licensed under the [MIT License](https://chatgpt.com/c/LICENSE).
+This project is licensed under the [MIT License](https://github.com/woorifisa-service-dev-4th/Woori-design?tab=MIT-1-ov-file#readme).

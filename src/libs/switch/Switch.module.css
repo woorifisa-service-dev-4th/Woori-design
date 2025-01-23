@@ -9,9 +9,6 @@
     cursor: pointer;
 }
 
-.switch.checked {
-}
-
 .switch.disabled {
     cursor: not-allowed;
     opacity: 0.6;

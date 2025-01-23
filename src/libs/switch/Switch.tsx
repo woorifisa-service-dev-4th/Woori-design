@@ -21,6 +21,14 @@ const Switch = React.forwardRef<HTMLDivElement, SwitchProps>(({
         }
     };
 
+    const handleKeyDown = (event: React.KeyboardEvent) => {
+        if (disabled) return;
+
+        if (event.key === " " || event.key === "Enter") {
+            handleChange(!isChecked);
+        }
+    };
+
     return (
         <div
             ref={ref}
@@ -34,9 +42,11 @@ const Switch = React.forwardRef<HTMLDivElement, SwitchProps>(({
                 backgroundColor: isChecked ? "#0d6cc1" : "#bfc2c4",
             }}
             onClick={handleClick}
+            onKeyDown={handleKeyDown}
             role="switch"
             aria-checked={isChecked}
             aria-disabled={disabled}
+            tabIndex={0}
         >
             <div
                 id="slider"

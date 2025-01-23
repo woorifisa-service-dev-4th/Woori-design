@@ -1,0 +1,31 @@
+.switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.switch.checked {
+}
+
+.switch.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.slider {
+    position: absolute;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.switch.checked .slider {
+    transform: translateX(20px);
+}

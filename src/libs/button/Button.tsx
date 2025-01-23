@@ -6,7 +6,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ size = "xlarge", width, children, onClick, ...props }, ref) => {
     const sizeClassName = styles[`button--${size}`];
 
-    const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         onClick?.(event as unknown as React.MouseEvent<HTMLButtonElement>);

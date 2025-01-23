@@ -1,7 +1,7 @@
 {
   "name": "woori-design",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A React component library for FloatButton and others",
   "type": "module",
   "main": "dist/index.umd.js",

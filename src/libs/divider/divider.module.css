@@ -1,0 +1,15 @@
+.divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: var(--spacing-medium) 0;
+}
+
+.dividerLine {
+  flex: 1;
+  background-color: var(--color-primary);
+}
+
+.text {
+  padding: 0 8px;
+}

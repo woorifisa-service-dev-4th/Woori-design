@@ -6,7 +6,7 @@ const meta = {
   title: "Components/Checkbox",
   component: Checkbox,
   argTypes: {
-    defaultChecked: { control: "boolean" }, // 초기 상태
+    defaultChecked: { control: "boolean" },
     disabled: { control: "boolean" },
     readOnly: { control: "boolean" },
     error: { control: "boolean" },
@@ -23,7 +23,7 @@ export default meta;
 
 type Story = StoryObj<typeof Checkbox>;
 
-/** Playground: 자유롭게 props를 테스트 */
+/** Playground: 단일 상태 테스트 */
 export const Playground: Story = {
   args: {
     label: "Checkbox Example",
@@ -31,22 +31,33 @@ export const Playground: Story = {
     size: "medium",
   },
   render: (args) => {
-    const [checked, setChecked] = useState(args.defaultChecked);
+    // 내부 상태 관리
+    const [checked, setChecked] = useState<boolean>(
+      args.defaultChecked ?? false
+    );
+
+    const handleChange = (newChecked: boolean) => {
+      setChecked(newChecked);
+      alert(`Checkbox state changed to: ${newChecked}`); // 상태 변경 시 alert 표시
+    };
 
     return (
-      <Checkbox
-        {...args}
-        defaultChecked={checked}
-        onChange={(newChecked) => {
-          setChecked(newChecked);
-          alert(`Playground Checkbox state changed to: ${newChecked}`);
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          backgroundColor: "#f9f9f9",
         }}
-      />
+      >
+        <Checkbox {...args} defaultChecked={checked} onChange={handleChange} />
+      </div>
     );
   },
 };
 
-/** Overview: 모든 상태와 크기를 한눈에 확인 */
+/** Overview: 상태와 크기별로 테이블로 확인 */
 export const Overview: Story = {
   render: () => (
     <table
@@ -65,147 +76,45 @@ export const Overview: Story = {
         </tr>
       </thead>
       <tbody>
-        {/* Default 상태 */}
-        <tr>
-          <td style={cellStyle}>Default Unselected</td>
-          <td style={cellStyle}>
-            <OverviewItem label="Small" size="small" />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Medium" size="medium" />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Large" size="large" />
-          </td>
-        </tr>
-        <tr>
-          <td style={cellStyle}>Default Selected</td>
-          <td style={cellStyle}>
-            <OverviewItem label="Small" size="small" defaultChecked />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Medium" size="medium" defaultChecked />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Large" size="large" defaultChecked />
-          </td>
-        </tr>
-
-        {/* Disabled 상태 */}
-        <tr>
-          <td style={cellStyle}>Disabled Unselected</td>
-          <td style={cellStyle}>
-            <OverviewItem label="Small" size="small" disabled />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Medium" size="medium" disabled />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Large" size="large" disabled />
-          </td>
-        </tr>
-        <tr>
-          <td style={cellStyle}>Disabled Selected</td>
-          <td style={cellStyle}>
-            <OverviewItem label="Small" size="small" defaultChecked disabled />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem
-              label="Medium"
-              size="medium"
-              defaultChecked
-              disabled
-            />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Large" size="large" defaultChecked disabled />
-          </td>
-        </tr>
-
-        {/* Read-only 상태 */}
-        <tr>
-          <td style={cellStyle}>Read-only Unselected</td>
-          <td style={cellStyle}>
-            <OverviewItem label="Small" size="small" readOnly />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Medium" size="medium" readOnly />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Large" size="large" readOnly />
-          </td>
-        </tr>
-        <tr>
-          <td style={cellStyle}>Read-only Selected</td>
-          <td style={cellStyle}>
-            <OverviewItem label="Small" size="small" defaultChecked readOnly />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem
-              label="Medium"
-              size="medium"
-              defaultChecked
-              readOnly
-            />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Large" size="large" defaultChecked readOnly />
-          </td>
-        </tr>
-
-        {/* Error 상태 */}
-        <tr>
-          <td style={cellStyle}>Error Unselected</td>
-          <td style={cellStyle}>
-            <OverviewItem label="Small" size="small" error />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Medium" size="medium" error />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Large" size="large" error />
-          </td>
-        </tr>
-        <tr>
-          <td style={cellStyle}>Error Selected</td>
-          <td style={cellStyle}>
-            <OverviewItem label="Small" size="small" defaultChecked error />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Medium" size="medium" defaultChecked error />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Large" size="large" defaultChecked error />
-          </td>
-        </tr>
-
-        {/* Warning 상태 */}
-        <tr>
-          <td style={cellStyle}>Warning Unselected</td>
-          <td style={cellStyle}>
-            <OverviewItem label="Small" size="small" warning />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Medium" size="medium" warning />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Large" size="large" warning />
-          </td>
-        </tr>
-        <tr>
-          <td style={cellStyle}>Warning Selected</td>
-          <td style={cellStyle}>
-            <OverviewItem label="Small" size="small" defaultChecked warning />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Medium" size="medium" defaultChecked warning />
-          </td>
-          <td style={cellStyle}>
-            <OverviewItem label="Large" size="large" defaultChecked warning />
-          </td>
-        </tr>
+        {/* 다양한 상태들을 테이블 형식으로 표시 */}
+        <StateRow label="Default Unselected" />
+        <StateRow label="Default Selected" defaultChecked />
+        <StateRow label="Disabled Unselected" disabled />
+        <StateRow label="Disabled Selected" defaultChecked disabled />
+        <StateRow label="Read-only Unselected" readOnly />
+        <StateRow label="Read-only Selected" defaultChecked readOnly />
+        <StateRow label="Error Unselected" error />
+        <StateRow label="Error Selected" defaultChecked error />
+        <StateRow label="Warning Unselected" warning />
+        <StateRow label="Warning Selected" defaultChecked warning />
       </tbody>
     </table>
+  ),
+};
+
+/** AllStates: 다양한 상태를 일렬로 표시 */
+export const AllStates: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "1rem",
+        padding: "1rem",
+      }}
+    >
+      <OverviewItem label="Default Unselected" />
+      <OverviewItem label="Default Selected" defaultChecked />
+      <OverviewItem label="Disabled Unselected" disabled />
+      <OverviewItem label="Disabled Selected" defaultChecked disabled />
+      <OverviewItem label="Read-only Unselected" readOnly />
+      <OverviewItem label="Read-only Selected" defaultChecked readOnly />
+      <OverviewItem label="Error Unselected" error />
+      <OverviewItem label="Error Selected" defaultChecked error />
+      <OverviewItem label="Warning Unselected" warning />
+      <OverviewItem label="Warning Selected" defaultChecked warning />
+    </div>
   ),
 };
 
@@ -214,7 +123,25 @@ const cellStyle: React.CSSProperties = {
   borderRight: "1px solid #eee",
 };
 
-/** OverviewItem 보조 컴포넌트 */
+/** Helper 컴포넌트: 테이블 행(Row) 생성 */
+function StateRow(props: CheckboxProps) {
+  return (
+    <tr>
+      <td style={cellStyle}>{props.label}</td>
+      <td style={cellStyle}>
+        <OverviewItem {...props} size="small" />
+      </td>
+      <td style={cellStyle}>
+        <OverviewItem {...props} size="medium" />
+      </td>
+      <td style={cellStyle}>
+        <OverviewItem {...props} size="large" />
+      </td>
+    </tr>
+  );
+}
+
+/** Helper 컴포넌트: 단일 Checkbox 표시 */
 function OverviewItem(
   props: Omit<CheckboxProps, "onChange"> & { defaultChecked?: boolean }
 ) {
@@ -223,15 +150,13 @@ function OverviewItem(
   );
 
   return (
-    <div style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
-      <Checkbox
-        {...props}
-        defaultChecked={checked}
-        onChange={(newChecked) => {
-          setChecked(newChecked);
-          alert(`Checkbox [${props.label}] state changed to: ${newChecked}`);
-        }}
-      />
-    </div>
+    <Checkbox
+      {...props}
+      defaultChecked={checked}
+      onChange={(newChecked) => {
+        setChecked(newChecked);
+        alert(`Checkbox [${props.label}] state changed to: ${newChecked}`);
+      }}
+    />
   );
 }

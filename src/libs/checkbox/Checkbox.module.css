@@ -1,0 +1,63 @@
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.input {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  accent-color: #0d6cc1; /* 기본 체크 색상 */
+}
+
+.label {
+  font-size: 14px;
+  color: #333;
+}
+
+/* 상태별 스타일 */
+.disabled {
+  cursor: not-allowed;
+}
+.disabled .input {
+  accent-color: #ccc;
+}
+.disabled .label {
+  color: #999;
+}
+
+.readOnly .input {
+  outline: 1px dashed #aaa;
+}
+
+.error .input {
+  accent-color: #e53935;
+}
+.error .label {
+  color: #e53935;
+}
+
+.warning .input {
+  accent-color: #ffa726;
+}
+.warning .label {
+  color: #ffa726;
+}
+
+/* 포커스 상태 */
+.focused {
+  outline: 2px solid #0d6cc1;
+  outline-offset: 4px;
+}
+
+.errorMessage {
+  color: #e53935;
+  margin: 4px 0 0 24px; /* 체크박스와 라벨 옆으로 약간 들여쓰기 */
+  font-size: 0.875rem;
+}
+.warningMessage {
+  color: #ffa726;
+  margin: 4px 0 0 24px;
+  font-size: 0.875rem;
+}

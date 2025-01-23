@@ -45,3 +45,8 @@
 .button--wide {
   width: 100%;
 }
+
+.button:focus {
+  outline: 1.5px solid #0056b3;
+  outline-offset: 1px;
+}

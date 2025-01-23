@@ -13,6 +13,8 @@ export interface CheckboxProps {
   warning?: boolean;
   indeterminate?: boolean;
   size?: "small" | "medium" | "large"; // 크기 옵션
+  errorMessage?: string; // 에러 메시지
+  warningMessage?: string; // 경고 메시지
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -25,6 +27,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   warning = false,
   indeterminate = false,
   size = "medium",
+  errorMessage,
+  warningMessage,
 }) => {
   const [checked, setChecked] = useState(defaultChecked);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -44,30 +48,44 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   };
 
   return (
-    <label
-      className={cx(
-        styles.checkbox,
-        {
-          [styles.disabled]: disabled,
-          [styles.readOnly]: readOnly,
-          [styles.error]: error,
-          [styles.warning]: warning,
-        },
-        {
-          [styles.small]: size === "small",
-          [styles.large]: size === "large",
-        }
+    <div className={styles.wrapper}>
+      <label
+        className={cx(
+          styles.checkbox,
+          {
+            [styles.disabled]: disabled,
+            [styles.readOnly]: readOnly,
+            [styles.error]: error,
+            [styles.warning]: warning,
+          },
+          {
+            [styles.small]: size === "small",
+            [styles.large]: size === "large",
+          }
+        )}
+      >
+        <input
+          ref={inputRef}
+          type="checkbox"
+          checked={checked}
+          onChange={handleChange}
+          disabled={disabled}
+          className={styles.input}
+        />
+        <span className={styles.label}>{label}</span>
+      </label>
+      {/* 에러 메시지 */}
+      {error && errorMessage && (
+        <div className={styles.errorMessage}>
+          <span>❗</span> {errorMessage}
+        </div>
       )}
-    >
-      <input
-        ref={inputRef}
-        type="checkbox"
-        checked={checked}
-        onChange={handleChange}
-        disabled={disabled}
-        className={styles.input}
-      />
-      <span className={styles.label}>{label}</span>
-    </label>
+      {/* 경고 메시지 */}
+      {warning && warningMessage && (
+        <div className={styles.warningMessage}>
+          <span>⚠️</span> {warningMessage}
+        </div>
+      )}
+    </div>
   );
 };

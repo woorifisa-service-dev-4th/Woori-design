@@ -1,4 +1,10 @@
-/* 기본 구조 */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 왼쪽 정렬 */
+  gap: 4px;
+}
+
 .checkbox {
   display: inline-flex;
   align-items: center;
@@ -6,10 +12,24 @@
 }
 
 .input {
+  margin-right: 8px;
+  accent-color: #0d6cc1; /* 기본 체크 색상 */
+}
+
+/* 크기별 스타일 추가 */
+.small .input {
+  width: 12px;
+  height: 12px;
+}
+
+.medium .input {
   width: 16px;
   height: 16px;
-  margin-right: 8px;
-  accent-color: #0d6cc1; /* 기본 색상 */
+}
+
+.large .input {
+  width: 20px;
+  height: 20px;
 }
 
 .label {
@@ -39,6 +59,15 @@
   color: #e53935;
 }
 
+.errorMessage {
+  font-size: 12px;
+  color: #e53935;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 24px; /* 체크박스와 일치하는 여백 */
+}
+
 .warning .input {
   accent-color: #ffa726;
 }
@@ -46,21 +75,11 @@
   color: #ffa726;
 }
 
-/* 크기별 스타일 */
-.small .input {
-  width: 12px;
-  height: 12px;
-  margin-right: 6px;
-}
-.small .label {
+.warningMessage {
   font-size: 12px;
-}
-
-.large .input {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-.large .label {
-  font-size: 16px;
+  color: #ffa726;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 24px; /* 체크박스와 일치하는 여백 */
 }

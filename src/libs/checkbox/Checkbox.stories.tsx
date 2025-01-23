@@ -29,17 +29,11 @@ export const Playground: Story = {
     label: "Checkbox Example",
     defaultChecked: false,
     size: "medium",
+    error: false,
+    warning: false,
   },
   render: (args) => {
-    // 내부 상태 관리
-    const [checked, setChecked] = useState<boolean>(
-      args.defaultChecked ?? false
-    );
-
-    const handleChange = (newChecked: boolean) => {
-      setChecked(newChecked);
-      alert(`Checkbox state changed to: ${newChecked}`); // 상태 변경 시 alert 표시
-    };
+    const [size, setSize] = useState(args.size);
 
     return (
       <div
@@ -51,7 +45,41 @@ export const Playground: Story = {
           backgroundColor: "#f9f9f9",
         }}
       >
-        <Checkbox {...args} defaultChecked={checked} onChange={handleChange} />
+        <div>
+          <Checkbox {...args} size={size} />
+          <div style={{ marginTop: "1rem" }}>
+            <label>
+              <input
+                type="radio"
+                name="size"
+                value="small"
+                checked={size === "small"}
+                onChange={() => setSize("small")}
+              />
+              Small
+            </label>
+            <label style={{ marginLeft: "1rem" }}>
+              <input
+                type="radio"
+                name="size"
+                value="medium"
+                checked={size === "medium"}
+                onChange={() => setSize("medium")}
+              />
+              Medium
+            </label>
+            <label style={{ marginLeft: "1rem" }}>
+              <input
+                type="radio"
+                name="size"
+                value="large"
+                checked={size === "large"}
+                onChange={() => setSize("large")}
+              />
+              Large
+            </label>
+          </div>
+        </div>
       </div>
     );
   },
@@ -63,8 +91,9 @@ export const Overview: Story = {
     <table
       style={{
         borderCollapse: "collapse",
-        textAlign: "center",
+        textAlign: "left",
         width: "100%",
+        margin: "0 auto",
       }}
     >
       <thead>
@@ -76,17 +105,32 @@ export const Overview: Story = {
         </tr>
       </thead>
       <tbody>
-        {/* 다양한 상태들을 테이블 형식으로 표시 */}
         <StateRow label="Default Unselected" />
         <StateRow label="Default Selected" defaultChecked />
         <StateRow label="Disabled Unselected" disabled />
         <StateRow label="Disabled Selected" defaultChecked disabled />
-        <StateRow label="Read-only Unselected" readOnly />
-        <StateRow label="Read-only Selected" defaultChecked readOnly />
-        <StateRow label="Error Unselected" error />
-        <StateRow label="Error Selected" defaultChecked error />
-        <StateRow label="Warning Unselected" warning />
-        <StateRow label="Warning Selected" defaultChecked warning />
+        <StateRow
+          label="Error Unselected"
+          error
+          errorMessage="Invalid text goes here"
+        />
+        <StateRow
+          label="Error Selected"
+          defaultChecked
+          error
+          errorMessage="Invalid text goes here"
+        />
+        <StateRow
+          label="Warning Unselected"
+          warning
+          warningMessage="Warning text goes here"
+        />
+        <StateRow
+          label="Warning Selected"
+          defaultChecked
+          warning
+          warningMessage="Warning text goes here"
+        />
       </tbody>
     </table>
   ),
@@ -99,21 +143,49 @@ export const AllStates: Story = {
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        gap: "1rem",
+        alignItems: "center", // 전체를 중앙 정렬
+        justifyContent: "center", // 수직 중앙 정렬
+        height: "100vh", // 페이지 전체 높이 사용
+        gap: "1rem", // 각 항목 간 간격
         padding: "1rem",
       }}
     >
-      <OverviewItem label="Default Unselected" />
-      <OverviewItem label="Default Selected" defaultChecked />
-      <OverviewItem label="Disabled Unselected" disabled />
-      <OverviewItem label="Disabled Selected" defaultChecked disabled />
-      <OverviewItem label="Read-only Unselected" readOnly />
-      <OverviewItem label="Read-only Selected" defaultChecked readOnly />
-      <OverviewItem label="Error Unselected" error />
-      <OverviewItem label="Error Selected" defaultChecked error />
-      <OverviewItem label="Warning Unselected" warning />
-      <OverviewItem label="Warning Selected" defaultChecked warning />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start", // 항목 왼쪽 정렬 유지
+          gap: "1rem",
+          width: "fit-content", // 내용에 맞게 크기 조정
+        }}
+      >
+        <OverviewItem label="Default Unselected" />
+        <OverviewItem label="Default Selected" defaultChecked />
+        <OverviewItem label="Disabled Unselected" disabled />
+        <OverviewItem label="Disabled Selected" defaultChecked disabled />
+        <OverviewItem
+          label="Error Unselected"
+          error
+          errorMessage="Invalid text goes here"
+        />
+        <OverviewItem
+          label="Error Selected"
+          defaultChecked
+          error
+          errorMessage="Invalid text goes here"
+        />
+        <OverviewItem
+          label="Warning Unselected"
+          warning
+          warningMessage="Warning text goes here"
+        />
+        <OverviewItem
+          label="Warning Selected"
+          defaultChecked
+          warning
+          warningMessage="Warning text goes here"
+        />
+      </div>
     </div>
   ),
 };

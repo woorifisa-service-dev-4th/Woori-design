@@ -2,38 +2,22 @@ import cx from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Checkbox.module.css";
 
-/** 체크박스 컴포넌트에 필요한 Props 인터페이스 */
+/** 체크박스 Props 정의 */
 export interface CheckboxProps {
-  /** 라벨 텍스트 */
   label: string;
-  /** 현재 체크 여부 (필수) */
-  checked: boolean;
-  /** 체크 상태가 변할 때 호출 */
-  onChange: (checked: boolean) => void;
-
-  /** 비활성화 여부 */
+  defaultChecked?: boolean; // 초기 상태
+  onChange?: (checked: boolean) => void; // 상태 변경 시 호출
   disabled?: boolean;
-  /** 읽기 전용 여부 */
   readOnly?: boolean;
-  /** 에러 상태 */
   error?: boolean;
-  /** 경고 상태 */
   warning?: boolean;
-  /** 부분 체크(Indeterminate) 상태 */
   indeterminate?: boolean;
-
-  /**
-   * 체크박스 크기
-   * - small: 작게
-   * - medium: 기본값
-   * - large: 크게
-   */
-  size?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large"; // 크기 옵션
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
   label,
-  checked,
+  defaultChecked = false,
   onChange,
   disabled = false,
   readOnly = false,
@@ -42,20 +26,21 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   indeterminate = false,
   size = "medium",
 }) => {
-  const [focused, setFocused] = useState(false);
+  const [checked, setChecked] = useState(defaultChecked);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // 인디터미넌트 상태
+  // 인디터미넌트 상태 적용
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.indeterminate = indeterminate;
     }
   }, [indeterminate]);
 
-  // 이벤트 핸들러
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (readOnly) return;
-    onChange(e.target.checked);
+    if (readOnly) return; // 읽기 전용일 경우 무시
+    const newChecked = e.target.checked;
+    setChecked(newChecked); // 내부 상태 업데이트
+    onChange?.(newChecked); // 외부 핸들러 호출 (옵션)
   };
 
   return (
@@ -67,9 +52,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           [styles.readOnly]: readOnly,
           [styles.error]: error,
           [styles.warning]: warning,
-          [styles.focused]: focused,
         },
-        // size별로 추가 클래스
         {
           [styles.small]: size === "small",
           [styles.large]: size === "large",
@@ -82,8 +65,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         checked={checked}
         onChange={handleChange}
         disabled={disabled}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
         className={styles.input}
       />
       <span className={styles.label}>{label}</span>

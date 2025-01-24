@@ -1,15 +1,10 @@
 .divider {
-  display: flex;
-  align-items: center;
+  border: none;
+  background-color: #007bff;
   width: 100%;
-  margin: var(--spacing-medium) 0;
+  height: 2px;
 }
 
-.dividerLine {
-  flex: 1;
-  background-color: var(--color-primary);
-}
-
-.text {
-  padding: 0 8px;
+.divider-color--secondary {
+  background-color: #e0e0e0;
 }

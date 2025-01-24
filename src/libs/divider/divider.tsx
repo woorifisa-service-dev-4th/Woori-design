@@ -2,26 +2,23 @@ import React from "react";
 import styles from "./Divider.module.css";
 import { DividerProps } from "./Divider.types";
 
-export const Divider: React.FC<DividerProps> = ({
-  text,
+export const Divider = ({
+  width,
   lineColor = "primary",
-  thickness = 2,
-  className,
-}) => {
-  const lineStyles = {
+  thickness = 6,
+}: DividerProps) => {
+  const dividerStyles = {
+    width,
     height: `${thickness}px`,
-    backgroundColor:
-      lineColor === "primary" ? "var(--color-primary)" : "#e0e0e0",
+    backgroundColor: lineColor === "primary" ? "#007bff" : "#e0e0e0",
   };
 
-  const leftLineStyle = { ...lineStyles };
-  const rightLineStyle = { ...lineStyles };
+  const className = [
+    styles.divider,
+    lineColor !== "primary" && styles["divider-color--secondary"],
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-  return (
-    <div className={`${styles.divider} ${className || ""}`}>
-      <div className={styles.dividerLine} style={leftLineStyle} />
-      {text && <span className={styles.text}>{text}</span>}
-      <div className={styles.dividerLine} style={rightLineStyle} />
-    </div>
-  );
+  return <hr className={className} style={dividerStyles} />;
 };

@@ -2,7 +2,7 @@ import styles from "./Divider.module.css";
 import { DividerProps } from "./Divider.types";
 
 export const Divider = ({
-  width = "300px",
+  width = "300px",  //기본 고정값
   lineColor = "primary",
   thickness = 6,
 }: DividerProps) => {

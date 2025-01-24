@@ -1,4 +1,4 @@
-import { useState, forwardRef, KeyboardEvent } from "react";
+import React, { useState, forwardRef } from "react";
 import styles from "./Switch.module.css";
 import { SwitchProps } from "./Switch.type";
 
@@ -22,7 +22,7 @@ export const Switch = forwardRef<HTMLDivElement, SwitchProps>(({
         }
     };
 
-    const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (disabled) return;
 
         if (event.key === " " || event.key === "Enter") {

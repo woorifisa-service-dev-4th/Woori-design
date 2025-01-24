@@ -2,7 +2,7 @@ import styles from "./Divider.module.css";
 import { DividerProps } from "./Divider.types";
 
 export const Divider = ({
-  width = "300px",  //기본 고정값
+  width = "300px",
   lineColor = "primary",
   thickness = 6,
 }: DividerProps) => {
@@ -12,10 +12,7 @@ export const Divider = ({
     backgroundColor: lineColor === "primary" ? "#007bff" : "#e0e0e0",
   };
 
-  const className = [
-    styles.divider,
-    lineColor !== "primary" && styles["divider-color--secondary"],
-  ]
+  const className = [styles.divider, lineColor !== "primary" && styles["divider-color--secondary"]]
     .filter(Boolean)
     .join(" ");
 

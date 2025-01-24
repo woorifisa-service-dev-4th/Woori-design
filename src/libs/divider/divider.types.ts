@@ -1,4 +1,4 @@
-export interface DividerProps {   //길이, 두께, 색깔
+export interface DividerProps {
   width: string;
   thickness?: number;
   lineColor?: "primary" | "gray";

@@ -1,9 +1,8 @@
-import React from "react";
 import styles from "./Divider.module.css";
 import { DividerProps } from "./Divider.types";
 
 export const Divider = ({
-  width,
+  width = "300px",
   lineColor = "primary",
   thickness = 6,
 }: DividerProps) => {

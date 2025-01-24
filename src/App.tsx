@@ -1,7 +1,12 @@
 import "./App.css";
+import { Divider } from "./libs/divider";
 
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <Divider />
+    </div>
+  );
 }
 
 export default App;

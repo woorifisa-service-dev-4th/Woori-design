@@ -16,6 +16,22 @@
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* 위치 정의 */
+.floatButton.left {
+  left: 16px;
+  right: auto;
+}
+
+.floatButton.right {
+  right: 16px;
+  left: auto;
+}
+
+.floatButton.center {
+  left: 50%;
+  bottom: 16px;
+}
+
 /* 크기 정의 */
 .floatButton.small {
   width: 40px;

@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from "react";
+import React, { useState, forwardRef, useEffect } from "react";
 import styles from "./Switch.module.css";
 import { SwitchProps } from "./Switch.type";
 
@@ -10,6 +10,10 @@ export const Switch = forwardRef<HTMLDivElement, SwitchProps>(({
                                                             ...props
                                                               }, ref) => {
     const [isChecked, setIsChecked] = useState<boolean>(checked);
+
+    useEffect(() => {
+        setIsChecked(checked);
+    }, [checked]);
 
     const handleChange = (newChecked: boolean) => {
         setIsChecked(newChecked);

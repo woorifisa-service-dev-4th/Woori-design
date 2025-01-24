@@ -1,3 +1,4 @@
+// FloatButton.tsx
 import React from "react";
 import styles from "./FloatButton.module.css";
 import { FloatButtonProps } from "./FloatButton.type";
@@ -6,15 +7,13 @@ const FloatButton = ({
   size = "medium",
   color,
   position = "right",
-  icon = "+",
-  text = "",
-  style = {},
   shape = "circle",
-
-  onClick,
-  onDoubleClick,
-  onKeyDown,
-  onKeyUp,
+  style,
+  className,
+  children,
+  icon,
+  text,
+  ...rest
 }: FloatButtonProps) => {
   const buttonClasses = [
     styles.floatButton,
@@ -22,19 +21,20 @@ const FloatButton = ({
     styles[shape],
     color ? styles.custom : styles.default,
     styles[position],
-  ].join(" ");
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <button
       className={buttonClasses}
       style={color ? { backgroundColor: color, ...style } : style}
-      onClick={onClick}
-      onDoubleClick={onDoubleClick}
-      onKeyDown={onKeyDown}
-      onKeyUp={onKeyUp}
+      {...rest}
     >
-      {icon}
-      {text && <span>{text}</span>}
+      {icon && <span className={styles.icon}>{icon}</span>}
+      {text && <span className={styles.text}>{text}</span>}
+      {children}
     </button>
   );
 };

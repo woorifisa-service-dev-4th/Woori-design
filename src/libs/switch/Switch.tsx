@@ -7,7 +7,7 @@ export const Switch = forwardRef<HTMLDivElement, SwitchProps>(({
                                                             onChange,
                                                             size = "md",
                                                             disabled = false,
-                                                            ...props
+    ...props
                                                               }, ref) => {
     const [isChecked, setIsChecked] = useState<boolean>(checked);
 
@@ -51,6 +51,7 @@ export const Switch = forwardRef<HTMLDivElement, SwitchProps>(({
             aria-checked={isChecked}
             aria-disabled={disabled}
             tabIndex={0}
+            {...props}
         >
             <div id="slider" className={sliderClassName} />
         </div>

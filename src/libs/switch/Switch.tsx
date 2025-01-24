@@ -1,14 +1,15 @@
-import * as React from "react";
+import { useState, forwardRef, KeyboardEvent } from "react";
 import styles from "./Switch.module.css";
 import { SwitchProps } from "./Switch.type";
 
-const Switch = React.forwardRef<HTMLDivElement, SwitchProps>(({
-                                                                  checked = false,
-                                                                  onChange,
-                                                                  size = "md",
-                                                                  disabled = false,
+export const Switch = forwardRef<HTMLDivElement, SwitchProps>(({
+                                                            checked = false,
+                                                            onChange,
+                                                            size = "md",
+                                                            disabled = false,
+                                                            ...props
                                                               }, ref) => {
-    const [isChecked, setIsChecked] = React.useState<boolean>(checked);
+    const [isChecked, setIsChecked] = useState<boolean>(checked);
 
     const handleChange = (newChecked: boolean) => {
         setIsChecked(newChecked);
@@ -21,7 +22,7 @@ const Switch = React.forwardRef<HTMLDivElement, SwitchProps>(({
         }
     };
 
-    const handleKeyDown = (event: React.KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
         if (disabled) return;
 
         if (event.key === " " || event.key === "Enter") {
@@ -29,18 +30,17 @@ const Switch = React.forwardRef<HTMLDivElement, SwitchProps>(({
         }
     };
 
+    const switchClassName = `${styles.switch} ${styles[size]} ${isChecked ? styles.checked : ""} ${
+        disabled ? styles.disabled : ""
+    }`;
+
+    const sliderClassName = `${styles.slider} ${styles[size]} ${disabled ? styles.disabled : ""}`;
+
     return (
         <div
             ref={ref}
             id="switch"
-            className={`${styles.switch} 
-            ${isChecked ? styles.checked : ""} 
-            ${disabled ? styles.disabled : ""}`}
-            style={{
-                width: size === "sm" ? "30px" : size === "lg" ? "50px" : "40px",
-                height: size === "sm" ? "15px" : size === "lg" ? "25px" : "20px",
-                backgroundColor: isChecked ? "#0d6cc1" : "#bfc2c4",
-            }}
+            className={switchClassName}
             onClick={handleClick}
             onKeyDown={handleKeyDown}
             role="switch"
@@ -48,24 +48,7 @@ const Switch = React.forwardRef<HTMLDivElement, SwitchProps>(({
             aria-disabled={disabled}
             tabIndex={0}
         >
-            <div
-                id="slider"
-                className={styles.slider}
-                style={{
-                    width: size === "sm" ? "11px" : size === "lg" ? "19px" : "14px",
-                    height: size === "sm" ? "11px" : size === "lg" ? "19px" : "14px",
-                    transform: isChecked
-                        ? size === "sm"
-                            ? "translateX(15px)"
-                            : size === "md"
-                                ? "translateX(22px)"
-                                : "translateX(27px)"
-                        : "translateX(0)",
-                    backgroundColor: disabled ? "#e0e4ea" : "#ffffff",
-                }}
-            />
+            <div id="slider" className={sliderClassName} />
         </div>
     );
 });
-
-export default Switch;

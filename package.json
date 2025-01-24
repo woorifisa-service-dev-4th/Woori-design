@@ -1,48 +1,53 @@
 {
   "name": "woori-design",
   "private": false,
-  "version": "0.0.6",
+  "version": "0.0.21",
   "description": "A React component library for FloatButton and others",
   "type": "module",
-  "main": "dist/index.umd.js",
+  "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.js"
+      "require": "./dist/index.cjs.js"
     },
-    "./dist/Index.css": "./dist/Index.css"
+    "./dist/index.css": "./dist/index.css"
   },
   "files": [
     "dist",
-    "src/lib"
+    "src/libs"
   ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "prepublishOnly": "npm run build"
-  },
-  "dependencies": {
-    "prop-types": "^15.8.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "preview": "vite preview"
   },
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
+  "dependencies": {
+    "prop-types": "^15.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.9",
+    "@types/react": "^19.0.7",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.5.1",
+    "typescript": "^5.7.3",
+    "vite": "^4.3.4",
+    "vite-plugin-css-injected-by-js": "^3.5.2"
+  },
   "keywords": [
     "react",
-    "float-button",
+    "design-system",
     "component",
-    "library"
+    "library",
+    "woori-group"
   ],
   "author": "1223v",
-  "license": "MIT",
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^6.0.7"
-  }
+  "license": "MIT"
 }

@@ -1,4 +1,4 @@
-import React, { forwardRef, KeyboardEvent } from "react";
+import React, { forwardRef } from "react";
 import { ButtonProps } from ".";
 import styles from "./Button.module.css";
 

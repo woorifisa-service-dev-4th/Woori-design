@@ -2,8 +2,11 @@ import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import styles from "./Checkbox.module.css";
 import { CheckboxProps } from "./Checkbox.type";
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ label, checked, onChange, type, disabled = false, helperText, ...props }, ref) => {
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+  (
+    { label, checked, onChange, type, disabled = false, helperText, ...props },
+    ref
+  ) => {
     const inputRef = useRef<HTMLInputElement>(null);
     useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
@@ -11,7 +14,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       onChange?.(e.target.checked);
     };
 
-    const classNames = [styles.checkbox, disabled ? styles.disabled : "", type ? styles[type] : ""]
+    const classNames = [
+      styles.checkbox,
+      disabled ? styles.disabled : "",
+      type ? styles[type] : "",
+    ]
       .filter(Boolean)
       .join(" ");
 
@@ -29,10 +36,14 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           />
           <div className={styles.textWrapper}>
             <span className={styles.label}>{label}</span>
-            {helperText && <div className={styles.helperText}>{helperText}</div>}
+            {helperText && (
+              <div className={styles.helperText}>{helperText}</div>
+            )}
           </div>
         </label>
       </>
     );
   }
 );
+
+export default Checkbox;

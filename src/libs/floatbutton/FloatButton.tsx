@@ -1,5 +1,3 @@
-// FloatButton.tsx
-import React from "react";
 import styles from "./FloatButton.module.css";
 import { FloatButtonProps } from "./FloatButton.type";
 
@@ -13,7 +11,7 @@ const FloatButton = ({
   children,
   icon,
   text,
-  ...rest
+  ...props
 }: FloatButtonProps) => {
   const buttonClasses = [
     styles.floatButton,
@@ -30,7 +28,7 @@ const FloatButton = ({
     <button
       className={buttonClasses}
       style={color ? { backgroundColor: color, ...style } : style}
-      {...rest}
+      {...props}
     >
       {icon && <span className={styles.icon}>{icon}</span>}
       {text && <span className={styles.text}>{text}</span>}

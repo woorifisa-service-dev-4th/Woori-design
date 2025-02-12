@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { ButtonProps } from ".";
 import styles from "./Button.module.css";
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ size = "xlarge", width, children, onClick, ...props }, ref) => {
     const sizeClassName = styles[`button--${size}`];
 
@@ -20,3 +20,5 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
+
+export default Button;
